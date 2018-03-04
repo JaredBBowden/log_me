@@ -12,6 +12,9 @@ def log_me():
     # Time variables
     now = datetime.datetime.now()
 
+    # Save and backup 
+
+
     # Populate new values to new entry
     new_entry = pd.DataFrame(
         data={
