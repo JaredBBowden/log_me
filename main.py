@@ -15,6 +15,8 @@ def photo_booth(the_date):
 
         cv2.imshow('frame', rgb)
         if cv2.waitKey(1) & 0xFF == ord('q'):
+
+            # FIXME return this, and remove the date argument
             cv2.imwrite("./images" + str(the_date) + ' capture.jpg', frame)
             break
 
@@ -43,6 +45,14 @@ def log_me(log_type):
                 "Comment": input("Comments?: "),
             },
             index=[0])
+    elif log_type == "weight":
+        new_entry = pd.DataFrame(
+            data={
+                "Date": the_date,
+                "Weight": input("Current weight?: "),
+                "Comment": input("Comments?: "),
+            },
+            index=[0])
     else:
         # Populate new values to new entry
         new_entry = pd.DataFrame(
@@ -59,13 +69,10 @@ def log_me(log_type):
     # Append the result
     to_out = big_log.append(new_entry, ignore_index=True)
 
+    # FIXME write to file here -- with the new test argument...
+
     # Write out new log
     to_out.to_csv("./big_log.csv", index=False)
-
-
-
-
-
 
 
 if __name__ == "__main__":
