@@ -3,6 +3,7 @@
 import pandas as pd
 import datetime
 import cv2
+import sys
 
 def photo_booth(the_date):
 
@@ -21,7 +22,7 @@ def photo_booth(the_date):
     cv2.destroyAllWindows()
 
 
-def log_me():
+def log_me(log_type):
 
     # Read in the log file
     big_log = pd.read_csv("./big_log.csv")
@@ -35,17 +36,25 @@ def log_me():
     # Save and backup
     big_log.to_csv("./data_backup/" + the_date + " " + "big_log.csv")
 
-    # Populate new values to new entry
-    new_entry = pd.DataFrame(
-        data={
-            "Date": the_date,
-            "Weight": input("Current weight?: "),
-            "Type": input("Is this a run, bike, or log?: "),
-            "Distance": input("How far did you go?: "),
-            "Pace": input("What was your pace?: "),
-            "Comment": input("Comments?: "),
-        },
-        index=[0])
+    if log_type == "doogie":
+        new_entry = pd.DataFrame(
+            data={
+                "Date": the_date,
+                "Comment": input("Comments?: "),
+            },
+            index=[0])
+    else:
+        # Populate new values to new entry
+        new_entry = pd.DataFrame(
+            data={
+                "Date": the_date,
+                "Weight": input("Current weight?: "),
+                "Type": input("Is this a run, bike, or log?: "),
+                "Distance": input("How far did you go?: "),
+                "Pace": input("What was your pace?: "),
+                "Comment": input("Comments?: "),
+            },
+            index=[0])
 
     # Append the result
     to_out = big_log.append(new_entry, ignore_index=True)
@@ -61,4 +70,6 @@ def log_me():
 
 if __name__ == "__main__":
 
-    log_me()
+    log_type = sys.argv[1]
+
+    log_me(log_type)

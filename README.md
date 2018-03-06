@@ -9,3 +9,4 @@ The start of an activity logger
 * Find a way to locate and crop faces
 * Clean up the README
 * Add a guide frame to the images
+* Add some github-style commit visualizations
