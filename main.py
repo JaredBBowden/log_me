@@ -14,7 +14,7 @@ def photo_booth(the_date):
 
         cv2.imshow('frame', rgb)
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            cv2.imwrite(str(the_date) + ' capture.jpg', frame)
+            cv2.imwrite("./images" + str(the_date) + ' capture.jpg', frame)
             break
 
     cap.release()
