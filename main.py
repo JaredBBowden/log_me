@@ -17,7 +17,7 @@ def photo_booth(the_date):
         if cv2.waitKey(1) & 0xFF == ord('q'):
 
             # FIXME return this, and remove the date argument
-            cv2.imwrite("./images" + str(the_date) + ' capture.jpg', frame)
+            cv2.imwrite("./images/" + str(the_date) + ' capture.jpg', frame)
             break
 
     cap.release()
