@@ -76,7 +76,14 @@ def log_me(log_type):
 
 
 if __name__ == "__main__":
+    print("###########################################################")
+    print("#                         LOG ME                          #")
+    print("###########################################################")
 
-    log_type = sys.argv[1]
+    # TODO Let's clean this up a little
+    try:
+        log_type = sys.argv[1]
+    except:
+        log_type = "sure"
 
     log_me(log_type)

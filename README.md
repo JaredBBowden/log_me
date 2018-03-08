@@ -10,3 +10,6 @@ The start of an activity logger
 * Clean up the README
 * Add a guide frame to the images
 * Add some github-style commit visualizations
+* Return image, so we can save all in one spot
+* located to above, add a test mode, that will show you what will be saved, but will not write to file
+* Add more user prompts
