@@ -24,7 +24,7 @@ def photo_booth(the_date):
     cv2.destroyAllWindows()
 
 
-def log_me(log_type):
+def log_me(log_type, just_testing = FALSE):
 
     # Read in the log file
     big_log = pd.read_csv("./big_log.csv")
@@ -72,18 +72,23 @@ def log_me(log_type):
     # FIXME write to file here -- with the new test argument...
 
     # Write out new log
-    to_out.to_csv("./big_log.csv", index=False)
+    if just_testing:
+        print("Just testing. We're done here.")
+    else:
+        print("Writing to log")
+        to_out.to_csv("./big_log.csv", index=False)
 
 
 if __name__ == "__main__":
+
+    # TODO add a few more prompts here
     print("###########################################################")
-    print("#                         LOG ME                          #")
+    print("                          LOG ME                           ")
     print("###########################################################")
 
-    # TODO Let's clean this up a little
     try:
-        log_type = sys.argv[1]
+        log_type = sys.argv[1:]
     except:
-        log_type = "sure"
+        log_type = None
 
-    log_me(log_type)
+    log_me(*log_type)
